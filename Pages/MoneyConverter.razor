@@ -1,0 +1,35 @@
+﻿<h3>MoneyConverter</h3>
+
+<div class="form-group">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Dolars</label>
+            <input type="number" class="form-control" placeholder="Dolars ...." @bind="Dolars" @bind:event="oninput" />
+        </div>
+    </div>
+    @if (_zloty != null)
+    {
+        <div class="row blockquote mt-5">
+            <span>@Dolars dolars is equel to @_zloty zlotych !  </span>
+        </div>
+    }
+</div>
+
+@code {
+    double? _zloty = null;
+    double? _dolars = null;
+
+    public double? Dolars
+    {
+        get => _dolars;
+        set
+        {
+            _dolars = value;
+            ConvertDistance();
+        }
+    }
+    private void ConvertDistance()
+    {
+        _zloty = Dolars * 3.96;
+    }
+}
