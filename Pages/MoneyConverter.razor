@@ -4,6 +4,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label>Dolars</label>
+            <input type="number" class="form-control" placeholder="Przelicznik ...." @bind="Przelicznik" @bind:event="oninput" />
             <input type="number" class="form-control" placeholder="Dolars ...." @bind="Dolars" @bind:event="oninput" />
         </div>
     </div>
@@ -16,9 +17,19 @@
 </div>
 
 @code {
+    double? _przelicznik = null;
     double? _zloty = null;
     double? _dolars = null;
 
+    public double? Przelicznik
+    {
+        get => _przelicznik;
+        set
+        {
+            _przelicznik = value;
+            ConvertDistance();
+        }
+    }
     public double? Dolars
     {
         get => _dolars;
@@ -30,6 +41,12 @@
     }
     private void ConvertDistance()
     {
-        _zloty = Dolars * 3.96;
+        if (Przelicznik == null)
+        {
+            _zloty = Dolars * 3.96;
+        } else
+        {
+            _zloty = Dolars * Przelicznik;
+        }
     }
 }
