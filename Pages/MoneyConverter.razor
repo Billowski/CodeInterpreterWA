@@ -27,7 +27,7 @@
         set
         {
             _przelicznik = value;
-            ConvertDistance();
+            ConvertMoney();
         }
     }
     public double? Dolars
@@ -36,10 +36,10 @@
         set
         {
             _dolars = value;
-            ConvertDistance();
+            ConvertMoney();
         }
     }
-    private void ConvertDistance()
+    private void ConvertMoney()
     {
         if (Przelicznik == null)
         {
