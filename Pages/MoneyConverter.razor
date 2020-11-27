@@ -41,12 +41,6 @@
     }
     private void ConvertMoney()
     {
-        if (Przelicznik == null)
-        {
-            _zloty = Dolars * 3.96;
-        } else
-        {
-            _zloty = Dolars * Przelicznik;
-        }
+        _zloty = _przelicznik == null ? _dolars * 3.96d : _dolars * _przelicznik;
     }
 }
